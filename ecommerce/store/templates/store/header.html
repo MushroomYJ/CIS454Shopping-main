@@ -1,0 +1,32 @@
+<header class="p-3 text-black flex-shrink-0">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+            <a href="{% url 'store' %}" class="d-flex align-items-center text-decoration-none text-dark mb-1 me-2">
+                <h4 class="my-0">Online Shopping</h4>
+            </a>
+            <ul class="nav justify-content-center me-lg-auto">
+            </ul>
+            <form action="#" class="me-lg-3">
+                <input type="search" class="form-control" placeholder="Search...">
+            </form>
+
+            {% if user.is_authenticated %}
+                <div class="text-end">
+                    <a href="{% url 'logout' %}" class="btn btn-outline-primary me-2" role="button">Log Out</a>
+                </div>
+            {% else %}
+            <div class="text-end">
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary me-2" role="button">Log In</a>
+                    <a href="{% url 'signup' %}" class="btn btn-primary" role="button">Sign Up</a>
+                </div>
+            {% endif %}
+            <a href="{% url 'cart' %}">
+                    <button class="btn btn-outline-dark ms-3">
+                    <i class="bi-cart-fill me-1"></i>
+                    <span>Cart</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{cartItems}}</span>
+                </button>
+                </a>
+        </div>
+    </div>
+</header>
